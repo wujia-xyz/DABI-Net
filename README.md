@@ -131,13 +131,3 @@ In short: use `configs/methods/` for routine runs, and `configs/original/` for a
 - Default single-modal dataset meta: `configs/dataset/breast_ultrasound_binary.yaml`
 - DABI-Net keeps DINOv2 frozen (`freeze_backbone: true`) to keep trainable parameters lightweight.
 
-## Citation
-If you find this repository useful, please cite:
-```bibtex
-@article{wu2026dabi,
-  title   = {DABI-Net: Depth-Aware Bidirectional Interaction Network for Region-of-Interest-Free Breast Ultrasound Diagnosis},
-  author  = {Wu, Jia and Peng, Bowen and Huang, Jing and Meng, Hongying and Qu, Biao and Mao, Jiashun},
-  journal = {Under Review},
-  year    = {2026}
-}
-```

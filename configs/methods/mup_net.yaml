@@ -1,0 +1,35 @@
+method:
+  key: mup_net
+  name: MUP-Net
+  category: multimodal
+
+run:
+  entrypoint: src/methods/mup_net/train.py
+  args:
+    data_dir: ./data/arc_multimodal
+    save_dir: ./outputs/ARC/multimodal/MUP_Net
+    nprotos: 6
+    folds: 5
+    epochs: 40
+    warm_epochs: 10
+    batch_size: 20
+    img_size: 224
+    num_workers: 4
+    seed: 42
+    pretrained_backbone: true
+
+training:
+  optimizer_warm: Adam
+  optimizer_joint: Adam
+  scheduler: StepLR
+  scheduler_step_size: 5
+  scheduler_gamma: 0.1
+
+model:
+  architecture: PPNet3
+  backbone: ResNet-18
+  modalities: [BUS, CDFI, UE]
+
+# ARC setup expects each fold file in data_dir:
+# - train_fold0.xlsx ... train_fold4.xlsx
+# - val_fold0.xlsx ... val_fold4.xlsx

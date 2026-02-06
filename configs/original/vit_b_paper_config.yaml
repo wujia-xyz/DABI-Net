@@ -1,0 +1,26 @@
+metadata:
+  config_role: archived_original
+  normalized_reference: configs/methods/vit_b.yaml
+  note: Converted to unified YAML schema for repository consistency.
+
+method:
+  key: vit_b
+  name: ViT-B/16
+  category: single_modal_roi_free
+
+run:
+  entrypoint: src/methods/vit_b/train.py
+  args:
+    data_dir: ./data/busi
+    epochs: 100
+    batch_size: 16
+    lr: 0.00001
+    img_size: 224
+    n_folds: 5
+    seed: 42
+
+training:
+  optimizer: AdamW
+  weight_decay: 0.01
+  scheduler: CosineAnnealingLR
+  dropout: 0.5

@@ -1,0 +1,15 @@
+method:
+  key: resnet18
+  name: ResNet-18
+  category: single_modal_roi_free
+
+run:
+  entrypoint: src/methods/resnet18/train.py
+  args:
+    data_dir: ./data/busi
+    epochs: 100
+    batch_size: 16
+    lr: 0.0001
+    img_size: 224
+    n_folds: 5
+    seed: 42

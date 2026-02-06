@@ -1,0 +1,30 @@
+metadata:
+  config_role: archived_original
+  normalized_reference: configs/methods/dabi_net.yaml
+  note: Converted to unified YAML schema for repository consistency.
+
+method:
+  key: dabi_net
+  name: DABI-Net v2
+  category: single_modal_roi_free
+
+run:
+  entrypoint: src/methods/dabi_net/train.py
+  args: {}
+
+training:
+  seed: 42
+  epochs: 100
+  batch_size: 16
+  lr: 0.0001
+  weight_decay: 0.01
+  optimizer: AdamW
+  scheduler: constant
+  label_smoothing: 0.1
+  use_class_weights: true
+
+model:
+  backbone: dinov2_vitb14
+  freeze_backbone: true
+  row_pooling: attention
+  bidirectional_mode: true_bidirectional

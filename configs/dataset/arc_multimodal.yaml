@@ -1,0 +1,20 @@
+dataset:
+  name: ARC_multimodal
+  task: binary_classification
+  classes: [benign, malignant]
+  modalities: [BUS, CDFI, UE]
+  image_extensions: [".png"]
+
+paths:
+  data_root: ./data/arc_multimodal
+  fold_train_pattern: ./data/arc_multimodal/train_fold{fold}.xlsx
+  fold_val_pattern: ./data/arc_multimodal/val_fold{fold}.xlsx
+
+split:
+  type: predefined_five_fold
+  n_splits: 5
+  fold_index_start: 0
+
+evaluation:
+  model_selection_metric: f1
+  reported_metrics: [acc, auc, sen, spe, pre, f1]

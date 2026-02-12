@@ -1,0 +1,28 @@
+metadata:
+  config_role: archived_original
+  normalized_reference: configs/methods/mb_dcnn.yaml
+  note: Converted to unified YAML schema for repository consistency.
+
+method:
+  key: mb_dcnn
+  name: MB-DCNN
+  category: roi_based
+
+run:
+  entrypoint: src/methods/mb_dcnn/train.py
+  args: {}
+
+training:
+  seed: 42
+  epochs: 100
+  batch_size: 16
+  lr: 0.0001
+  img_size: 224
+  optimizer: Adam
+  weight_decay: 0.0005
+  scheduler: ReduceLROnPlateau
+  scheduler_patience: 10
+
+model:
+  input_channels: 4
+  use_gt_mask: true

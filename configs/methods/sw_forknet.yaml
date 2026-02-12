@@ -1,0 +1,15 @@
+method:
+  key: sw_forknet
+  name: SW-ForkNet
+  category: single_modal_roi_free
+
+run:
+  entrypoint: src/methods/sw_forknet/train.py
+  args:
+    data_dir: ./data/busi
+    epochs: 100
+    batch_size: 16
+    lr: 0.0001
+    img_size: 224
+    n_folds: 5
+    seed: 42

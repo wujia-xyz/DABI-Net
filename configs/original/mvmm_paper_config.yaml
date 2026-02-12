@@ -1,0 +1,29 @@
+metadata:
+  config_role: archived_original
+  normalized_reference: configs/methods/mvmm.yaml
+  note: Converted from ARC multimodal comparison script to unified YAML schema.
+
+method:
+  key: mvmm
+  name: MVMM
+  category: multimodal
+
+run:
+  entrypoint: src/methods/mvmm/train.py
+  args:
+    data_dir: ./data/arc_multimodal
+    save_dir: ./outputs/ARC/multimodal/MVMM
+    epochs: 100
+    batch_size: 20
+    lr: 0.0001
+    img_size: 224
+    folds: 5
+    num_workers: 4
+    seed: 42
+    pretrained: true
+
+training:
+  optimizer: Adam
+  scheduler: StepLR
+  scheduler_step_size: 50
+  scheduler_gamma: 0.5

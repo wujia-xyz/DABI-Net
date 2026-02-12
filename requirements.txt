@@ -1,0 +1,12 @@
+torch
+torchvision
+numpy
+scikit-learn
+Pillow
+PyYAML
+timm
+transformers
+pandas
+openpyxl
+einops
+opencv-python

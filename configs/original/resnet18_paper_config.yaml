@@ -1,0 +1,26 @@
+metadata:
+  config_role: archived_original
+  normalized_reference: configs/methods/resnet18.yaml
+  note: Converted to unified YAML schema for repository consistency.
+
+method:
+  key: resnet18
+  name: ResNet-18
+  category: single_modal_roi_free
+
+run:
+  entrypoint: src/methods/resnet18/train.py
+  args:
+    data_dir: ./data/busi
+    epochs: 100
+    batch_size: 16
+    lr: 0.0001
+    img_size: 224
+    n_folds: 5
+    seed: 42
+
+training:
+  optimizer: Adam
+  weight_decay: 0.0001
+  scheduler: CosineAnnealingLR
+  dropout: 0.5

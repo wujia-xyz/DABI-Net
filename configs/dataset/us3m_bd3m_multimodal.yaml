@@ -1,0 +1,24 @@
+dataset:
+  name: US3M_BD3M_multimodal
+  task: binary_classification
+  classes: [benign, malignant]
+  modalities: [BUS, CDFI, UE]
+  image_extensions: [".jpg"]
+
+paths:
+  data_root: ./data/us3m/BD3M
+  label_file: ./data/us3m/BD3M.xlsx
+
+labels:
+  id_col: 序号
+  label_col: 病理结果（0：良性，1：恶性）
+
+split:
+  type: StratifiedKFold
+  n_splits: 5
+  shuffle: true
+  random_state: 42
+
+evaluation:
+  model_selection_metric: f1
+  reported_metrics: [acc, auc, sen, spe, pre, f1]

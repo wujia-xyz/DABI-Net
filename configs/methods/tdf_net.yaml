@@ -1,0 +1,34 @@
+method:
+  key: tdf_net
+  name: TDF-Net
+  category: multimodal
+
+run:
+  entrypoint: src/methods/tdf_net/train.py
+  args:
+    data_dir: ./data/us3m/BD3M
+    label_file: ./data/us3m/BD3M.xlsx
+    save_dir: ./outputs/ARC/multimodal/TDF_Net
+    id_col: 序号
+    label_col: 病理结果（0：良性，1：恶性）
+    img_size: 224
+    batch_size: 16
+    epochs: 150
+    lr: 0.00002
+    weight_decay: 0.00001
+    n_folds: 5
+    log_step: 5
+    num_workers: 4
+    seed: 42
+    backbone: vit
+    pretrained: true
+
+training:
+  optimizer: AdamW
+  scheduler: CosineAnnealingWarmRestarts
+  scheduler_t0: 20
+  scheduler_tmult: 2
+
+model:
+  backbones: [vit, resnet]
+  modalities: [BUS, CDFI, UE]

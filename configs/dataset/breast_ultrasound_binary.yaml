@@ -1,0 +1,22 @@
+dataset:
+  name: BUSI
+  task: binary_classification
+  classes: [benign, malignant]
+  excluded_class: normal
+  image_extensions: [".png"]
+  ignore_mask_files_for_roi_free: true
+
+paths:
+  data_root: ./data/busi
+  benign_dir: ./data/busi/benign
+  malignant_dir: ./data/busi/malignant
+
+split:
+  type: StratifiedKFold
+  n_splits: 5
+  shuffle: true
+  random_state: 42
+
+evaluation:
+  model_selection_metric: f1
+  reported_metrics: [acc, auc, sen, spe, pre, f1]

@@ -5,7 +5,9 @@ Official code release for the paper:
 **DABI-Net: Depth-Aware Bidirectional Interaction Network for Region-of-Interest-Free Breast Ultrasound Diagnosis**
 
 ## Abstract
-Breast ultrasound is widely used in clinical screening, but many deep models either rely on lesion ROI masks or treat ultrasound as isotropic 2D imagery. DABI-Net is an ROI-free framework that explicitly models depth structure in ultrasound features. Built on a DINOv2 backbone with end-to-end fine-tuning, DABI-Net aggregates patch features along rows to form a depth sequence, injects hybrid depth encoding, and applies bidirectional interaction layers for top-down and bottom-up exchange. This design preserves diagnostically relevant depth cues.
+Breast ultrasound is widely used for cancer screening because it is noninvasive and accessible. However, many deep learning pipelines either depend on pre-defined regions of interest (ROIs) or process ultrasound as an isotropic two-dimensional signal, ignoring that the vertical axis corresponds to acoustic propagation depth. We investigate whether self-supervised vision transformer features preserve this depth structure and observe that DINOv2 patch tokens exhibit depth-dependent organization. However, standard global average pooling collapses spatial dimensions and does not explicitly leverage this structure.
+To address this issue, we propose a Depth-Aware Bidirectional Interaction Network (DABI-Net) that converts the DINOv2 patch grid into a one-dimensional depth sequence through row-wise attention pooling, injects hybrid depth encoding, and models depth interactions with bidirectional top-down and bottom-up streams coupled by cross-attention.
+We evaluate DABI-Net on three public breast ultrasound datasets using five-fold cross-validation. On BUSI, DABI-Net achieves 0.948 recall, 0.932 F1, and 0.977 AUC without requiring lesion masks, outperforming all compared single-modal ROI-free methods. Experimental results across all three datasets demonstrate that explicitly modeling depth organization is an effective strategy for ROI-free breast ultrasound diagnosis.
 
 ## Highlights
 - ROI-free pipeline for DABI-Net (no lesion mask required).
@@ -131,13 +133,4 @@ In short: use `configs/methods/` for routine runs, and `configs/original/` for a
 - Default single-modal dataset meta: `configs/dataset/breast_ultrasound_binary.yaml`
 - DABI-Net fine-tunes DINOv2 end-to-end (`freeze_backbone: false`) with cosine learning rate scheduling and warmup.
 
-## Citation
-If you find this repository useful, please cite:
-```bibtex
-@article{wu2026dabi,
-  title   = {DABI-Net: Depth-Aware Bidirectional Interaction Network for Region-of-Interest-Free Breast Ultrasound Diagnosis},
-  author  = {Wu, Jia and Peng, Bowen and Huang, Jing and Meng, Hongying and Qu, Biao and Mao, Jiashun},
-  journal = {Under Review},
-  year    = {2026}
-}
-```
+

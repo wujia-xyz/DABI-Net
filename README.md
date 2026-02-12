@@ -86,7 +86,8 @@ For ROI-based methods (MB-DCNN / CAM-QUS / MsGoF), mask files (`*_mask.png`) are
     │   └── EUS_*.jpg
     └── ...
 ```
-Default label columns are `序号` and `病理结果（0：良性，1：恶性）`, configurable via CLI.
+Default label columns are Index and Pathology Result (0: Benign, 1: Malignant), configurable via CLI.
+
 
 ## Unified Training
 List all available methods:
